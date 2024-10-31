@@ -3,8 +3,10 @@ from file_operations import VERSION
 import file_operations
 from faker import Faker
 import random
+import os
 
 
+os.makedirs('./all_results', 0o755)
 fake = Faker("ru_RU")
 skill1 = "Кислотный взгляд"
 skill2 = "Тайный побег"
@@ -57,6 +59,7 @@ for char in symbols.keys():
     runic_skills.append(skill6)
     runic_skills.append(skill7)
     runic_skills.append(skill8)
+
 if __name__ == '__main__':
     for render_template in range (10):
         n = 0
