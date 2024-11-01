@@ -94,22 +94,22 @@ def main():
             skill2 = skill_3[1]
             skill3 = skill_3[2]
             context = {
-                    "first_name": fake.first_name(),
-                    "last_name": fake.last_name(),
-                    "job": fake.job(),
-                    "town": fake.city(),
-                    "strength": random.randint(3, 18),
-                    "agility": random.randint(3, 18),
-                    "endurance": random.randint(3, 18),
-                    "intelligence": random.randint(3, 18),
-                    "luck": random.randint(3, 18),
-                    "skill_1": skill1,
-                    "skill_2": skill2,
-                    "skill_3": skill3
-                    }
+                "first_name": fake.first_name(),
+                "last_name": fake.last_name(),
+                "job": fake.job(),
+                "town": fake.city(),
+                "strength": random.randint(3, 18),
+                "agility": random.randint(3, 18),
+                "endurance": random.randint(3, 18),
+                "intelligence": random.randint(3, 18),
+                "luck": random.randint(3, 18),
+                "skill_1": skill1,
+                "skill_2": skill2,
+                "skill_3": skill3
+                }
             n=n+1
             file_operations.render_template("charsheet.svg", "all_results/result{}.svg".format(n), context)
-        exit()
+    exit()
 
 if __name__ == '__main__':
     main()
