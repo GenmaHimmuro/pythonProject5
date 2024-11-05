@@ -1,17 +1,19 @@
+import os
+import random
+from faker import Faker
 from faker.generator import random
 import file_operations
-from faker import Faker
-import random
-import os
 
 
-os.makedirs('./all_results',0o755,exist_ok=True)
-fake = Faker("ru_RU")
-skills = ['Кислотный взгляд',"Тайный побег",
-    "Ледяной выстрел","Огненный заряд",
-    "Стремительный прыжок","Электрический выстрел",
-    "Ледяной удар","Стремительный удар"]
-runic_skills = []
+skills = ['Кислотный взгляд',
+    "Тайный побег",
+    "Ледяной выстрел",
+    "Огненный заряд",
+    "Стремительный прыжок",
+    "Электрический выстрел",
+    "Ледяной удар",
+    "Стремительный удар"
+    ]
 symbols = {'а': 'а͠',
     'б': 'б̋',
     'в': 'в͒͠',
@@ -81,13 +83,19 @@ symbols = {'а': 'а͠',
     ' ': ' '
 }
 
+
 def main():
+    runic_skills = []
+    fake = Faker("ru_RU")
+    n = 0
+
     for i in skills:
         runic_skill = i
+
         for key, value in symbols.items():
             runic_skill = runic_skill.replace(key, value)
         runic_skills.append(runic_skill)
-    n = 0
+
     while n < 10:
         random.shuffle(runic_skills)
         context = {
@@ -105,8 +113,10 @@ def main():
             "skill_3": runic_skills[2]
         }
         n=n+1
+        os.makedirs('./all_results', 0o755, exist_ok=True)
         file_operations.render_template("charsheet.svg", "all_results/result{}.svg".format(n), context)
     exit()
+
 
 if __name__ == '__main__':
     main()
