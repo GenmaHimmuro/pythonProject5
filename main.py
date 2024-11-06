@@ -5,7 +5,8 @@ from faker.generator import random
 import file_operations
 
 
-skills = ['Кислотный взгляд',
+SKILLS = [
+    'Кислотный взгляд',
     "Тайный побег",
     "Ледяной выстрел",
     "Огненный заряд",
@@ -13,8 +14,9 @@ skills = ['Кислотный взгляд',
     "Электрический выстрел",
     "Ледяной удар",
     "Стремительный удар"
-    ]
-symbols = {'а': 'а͠',
+]
+SYMBOLS = {
+    'а': 'а͠',
     'б': 'б̋',
     'в': 'в͒͠',
     'г': 'г͒͠',
@@ -89,10 +91,10 @@ def main():
     fake = Faker("ru_RU")
     n = 0
 
-    for i in skills:
+    for i in SKILLS:
         runic_skill = i
 
-        for key, value in symbols.items():
+        for key, value in SYMBOLS.items():
             runic_skill = runic_skill.replace(key, value)
         runic_skills.append(runic_skill)
 
